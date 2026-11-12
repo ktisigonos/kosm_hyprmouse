@@ -7,8 +7,9 @@ The app sets each set option by name in `~/.config/hypr/hyprmouse.conf` and chan
 else, so hyprmouse's behaviour settings stay yours. Every set option's key must be in the
 file already; a missing one fails the apply, naming it.
 
-`from(theme)` sets the background black (white in light mode) at the theme's
-`background_alpha`, the grid cyan, dots and text white and the text's outline black. The font
+`from(theme)` sets the background from the theme's background role at its `background_alpha`,
+the grid the accent, dots and text the foreground role and the text's outline the background
+role. The font
 is left alone.
 
 ## Fields

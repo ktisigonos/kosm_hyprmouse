@@ -28,16 +28,15 @@ text_outline_color: ?kosm.Color = null,
 /// The background's opacity, 0 (transparent) to 1 (opaque). null: left as it is.
 background_opacity: ?f64 = null,
 
-/// Colors from the theme: the background black (white in light mode) at the theme's
-/// background alpha, the grid cyan, dots and text white and the text's outline black. The
+/// Colors from the theme: the background role at the theme's background alpha, the grid the
+/// accent, dots and text the foreground role and the text's outline the background role. The
 /// font is left alone.
 pub fn from(theme: kosm.Theme) App {
-    const palette = theme.palette;
-    const foreground = if (theme.mode == .dark) palette.white else palette.black;
-    const background = if (theme.mode == .dark) palette.black else palette.white;
+    const foreground = theme.roles.foreground;
+    const background = theme.roles.background;
     return .{
         .background_color = background,
-        .grid_color = palette.cyan,
+        .grid_color = theme.roles.accent,
         .dot_color = foreground,
         .text_color = foreground,
         .text_outline_color = background,
@@ -96,7 +95,7 @@ test "only the set options' values change, and a missing key fails naming it" {
         .warnings = &warnings,
         .app = "hyprmouse",
     };
-    var app = from(kosm.Theme.from(.{ .black = kosm.hex("000000"), .white = kosm.hex("ffffff"), .cyan = kosm.hex("00ffff") }, .dark));
+    var app = from(kosm.Theme.from(.{ .palette = .{ .black = kosm.hex("000000"), .white = kosm.hex("ffffff"), .cyan = kosm.hex("00ffff") }, .mode = .dark }));
     app.font = "Iosevka";
     try app.apply(&output);
     try testing.expectEqualStrings(
