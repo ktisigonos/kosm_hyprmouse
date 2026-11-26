@@ -12,6 +12,8 @@ the grid the accent, dots and text the foreground role and the text's outline th
 role. The font
 is left alone.
 
+`kosm doctor` checks that hyprmouse is installed, as the `hyprmouse` command.
+
 ## Fields
 
 | Field | Default |

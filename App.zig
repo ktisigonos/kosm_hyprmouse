@@ -44,6 +44,12 @@ pub fn from(theme: kosm.Theme) App {
     };
 }
 
+/// What `kosm doctor` checks: hyprmouse installed, as the `hyprmouse` command.
+pub fn checkup(self: App) kosm.Checkup {
+    _ = self;
+    return .{ .program = .{ .command = "hyprmouse" } };
+}
+
 /// Sets every set option in `file`. With none set, the file is not read.
 pub fn apply(self: App, output: *kosm.Output) !void {
     var config: ?kosm.Output.Selection = null;
